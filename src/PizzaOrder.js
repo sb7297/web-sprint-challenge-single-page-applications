@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 
@@ -38,8 +39,19 @@ const PizzaOrder = function () {
     }
   }
 
+  const handleSubmit = ev => {
+    ev.preventDefault();
+    axios.post('https://reqres.in/api/orders', form)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   return (<>
-    <form id="pizza-form">
+    <form id="pizza-form" onSubmit={handleSubmit}>
       <label>
         Your name:
         <input name="name" value={form.name} type="text" id="name-input" onChange={handleChange} />
@@ -73,8 +85,9 @@ const PizzaOrder = function () {
         Special instructions:
         <input name="specialInstructions" value={form.specialInstructions} type="text" id="special-text" onChange={handleChange}/>
       </label>
+      <button id="order-button">Add to order</button>
     </form>
-    <p style={ {color: 'maroon'} }>{nameError}</p>
+    <p style={ {color: 'orange'} }>{nameError}</p>
   </>);
 }
 
