@@ -67,19 +67,19 @@ const PizzaOrder = function () {
       </label>
       <label>
         Pepperoni?:
-        <input name="pepperoni" type="checkbox" checked={form.pepperoni} onChange={handleChange}/>
+        <input data-cy="pepperoni" name="pepperoni" type="checkbox" checked={form.pepperoni} onChange={handleChange}/>
       </label>
       <label>
         Peppers?:
-        <input name="peppers" type="checkbox" checked={form.peppers} onChange={handleChange}/>
+        <input data-cy="peppers" name="peppers" type="checkbox" checked={form.peppers} onChange={handleChange}/>
       </label>
       <label>
         Spinach?:
-        <input name="spinach" type="checkbox" checked={form.spinach} onChange={handleChange}/>
+        <input data-cy="spinach" name="spinach" type="checkbox" checked={form.spinach} onChange={handleChange}/>
       </label>
       <label>
         Anchovies?:
-        <input name="anchovies" type="checkbox" checked={form.anchovies} onChange={handleChange}/>
+        <input data-cy="anchovies" name="anchovies" type="checkbox" checked={form.anchovies} onChange={handleChange}/>
       </label>
       <label>
         Special instructions:
