@@ -34,3 +34,16 @@ describe("Able to select multiple toppings", function() {
       .should('not.be.checked')
   })
 })
+
+describe("Form can be submitted", function() {
+  it('can submit the form', function() {
+    cy.visit("pizza");
+    cy.get("#name-input")
+      .type("Taylor Hebert")
+    
+    cy.get("#order-button")
+      .click()
+
+    cy.contains("Form submitted successfully")
+  })
+})

@@ -15,6 +15,8 @@ const PizzaOrder = function () {
 
   const [nameError, setNameError] = useState('name must be at least 2 characters');
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const nameSchema = Yup.string()
     .required()
     .min(2);
@@ -44,6 +46,7 @@ const PizzaOrder = function () {
     axios.post('https://reqres.in/api/orders', form)
       .then(resp => {
         console.log(resp);
+        setFormSubmitted(true);
       })
       .catch(err => {
         console.log(err);
@@ -88,6 +91,7 @@ const PizzaOrder = function () {
       <button id="order-button">Add to order</button>
     </form>
     <p style={ {color: 'orange'} }>{nameError}</p>
+    <p style={ {color: 'green'} }>{ formSubmitted ? "Form submitted successfully!" : "" }</p>
   </>);
 }
 
