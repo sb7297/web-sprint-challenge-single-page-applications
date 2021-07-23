@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as Yup from 'yup';
 
 const PizzaOrder = function () {
   const [form, setForm] = useState({
@@ -11,6 +12,12 @@ const PizzaOrder = function () {
     specialInstructions: ''
   });
 
+  const [nameError, setNameError] = useState('name must be at least 2 characters');
+
+  const nameSchema = Yup.string()
+    .required()
+    .min(2);
+
   const handleChange = ev => {
     const { name, value, checked, type } = ev.target;
     const data = type === "checkbox" ? checked : value;
@@ -19,6 +26,16 @@ const PizzaOrder = function () {
       ...form,
       [name]: data
     });
+
+    if(name === "name") {
+      nameSchema.validate(data)
+      .then(() => {
+        setNameError('');
+      })
+      .catch(() => {
+        setNameError('name must be at least 2 characters');
+      });
+    }
   }
 
   return (<>
@@ -57,6 +74,7 @@ const PizzaOrder = function () {
         <input name="specialInstructions" value={form.specialInstructions} type="text" id="special-text" onChange={handleChange}/>
       </label>
     </form>
+    <p style={ {color: 'maroon'} }>{nameError}</p>
   </>);
 }
 
