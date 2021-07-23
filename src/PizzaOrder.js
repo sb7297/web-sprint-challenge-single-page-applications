@@ -93,7 +93,7 @@ const PizzaOrder = function () {
       <button id="order-button" /*disabled={nameError === '' ? false : true}*/>Add to order</button>
     </form>
     <p style={ {color: 'orange'} }>{nameError}</p>
-    <p style={ {color: 'green'} }>{ formSubmitted ? "Form submitted successfully!" : "" }</p>
+    <p style={ {color: 'green'} }>{ formSubmitted ? "Form submitted!" : "" }</p>
   </>);
 }
 
