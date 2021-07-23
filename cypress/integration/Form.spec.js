@@ -44,6 +44,6 @@ describe("Form can be submitted", function() {
     cy.get("#order-button")
       .click()
 
-    cy.contains("Form submitted successfully")
+    cy.contains("Form submitted")
   })
 })
